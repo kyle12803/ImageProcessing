@@ -19,9 +19,9 @@ public class ImageProcessingViewImpl implements ImageProcessingView {
 
   /**
    * Constructs an image processing view with the given appendable.
-   * 
+   *
    * @param ap the appendable object
-   * @throws IllegalArgumentException
+   * @throws IllegalArgumentException if the appendable is null
    */
   public ImageProcessingViewImpl(Appendable ap) throws IllegalArgumentException {
     if (ap == null) {
