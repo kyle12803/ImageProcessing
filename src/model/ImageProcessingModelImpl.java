@@ -25,51 +25,6 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   }
 
   @Override
-  public Image loadImage(String filename) throws IllegalArgumentException {
-    Scanner sc;
-
-    try {
-      sc = new Scanner(new FileInputStream(filename));
-    } catch (FileNotFoundException e) {
-      throw new IllegalArgumentException();
-    }
-    StringBuilder builder = new StringBuilder();
-    //read the file line by line, and populate a string. This will throw away any comment lines
-    while (sc.hasNextLine()) {
-      String s = sc.nextLine();
-      if (s.charAt(0) != '#') {
-        builder.append(s).append(System.lineSeparator());
-      }
-    }
-
-    //now set up the scanner to read from the string we just built
-    sc = new Scanner(builder.toString());
-
-    String token;
-
-    token = sc.next();
-    if (!token.equals("P3")) {
-      System.out.println("Invalid PPM file: plain RAW file should begin with P3");
-    }
-    int width = sc.nextInt();
-    int height = sc.nextInt();
-    int maxValue = sc.nextInt();
-
-    List<List<Pixel>> lop = new ArrayList<>();
-    for (int i = 0; i < height; i++) {
-      List<Pixel> row = new ArrayList<>();
-      for (int j = 0; j < width; j++) {
-        int r = sc.nextInt();
-        int g = sc.nextInt();
-        int b = sc.nextInt();
-        row.add(new Pixel(r, g, b));
-      }
-      lop.add(row);
-    }
-    return new ImageImpl(maxValue, width, height, lop);
-  }
-
-  @Override
   public void addImage(Image img, String name) throws IllegalArgumentException {
     if (img == null || name == null) {
       throw new IllegalArgumentException("Invalid image or name.");

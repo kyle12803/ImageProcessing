@@ -8,14 +8,6 @@ import image.Image;
  * model. One object of the model is one image processor.
  */
 public interface ImageProcessingModel {
-  /**
-   * Reads a ppm image from file and creates an image object representing it.
-   *
-   * @param filename the name of the ppm file
-   * @return a new image object
-   * @throws IllegalArgumentException if the file name does not exist
-   */
-  Image loadImage(String filename) throws IllegalArgumentException;
 
   /**
    * Adds the given image to the map of images with the key as the given string value.
