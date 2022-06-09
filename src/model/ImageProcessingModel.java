@@ -28,6 +28,16 @@ public interface ImageProcessingModel {
   Image getImage(String key) throws IllegalArgumentException;
 
   /**
+   * Clones an image by adding a duplicate to the map of images.
+   *
+   * @param image the name of the image to be cloned
+   * @param dest the name of the new clone image
+   * @return the new image that has the same properties
+   * @throws IllegalArgumentException if the image name is null
+   */
+  Image clone(String image, String dest) throws IllegalArgumentException;
+
+  /**
    * This is the method where we will call the macro on the model.
    *
    * @param commandMacro the command passed in which we will execute on the model.

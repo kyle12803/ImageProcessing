@@ -12,8 +12,12 @@ public class ImageImpl implements Image {
   private final int height;
   private final List<List<Pixel>> lop;
 
-  
-  public ImageImpl(int maxValue, int width, int height, List<List<Pixel>> lop) {
+
+  public ImageImpl(int maxValue, int width, int height, List<List<Pixel>> lop)
+          throws IllegalArgumentException {
+    if (maxValue < 0 || lop == null || width != lop.get(0).size() || height != lop.size()) {
+      throw new IllegalArgumentException("Invalid arguments.");
+    }
     this.maxValue = maxValue;
     this.width = width;
     this.height = height;

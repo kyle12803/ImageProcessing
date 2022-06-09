@@ -1,6 +1,4 @@
-import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import static java.util.Arrays.asList;
@@ -10,7 +8,7 @@ import image.ImageImpl;
 import image.Pixel;
 
 /**
- * This class makes sure everything within an image class works as intended.
+ * This test class makes sure everything within an image class works as intended.
  */
 public class ImageTest {
   Pixel exampleTest1 = new Pixel(50,60,70);
@@ -21,18 +19,34 @@ public class ImageTest {
   Pixel exampleTest6 = new Pixel(55,25,55);
 
 
-  List<List<Pixel>> lop1 = new ArrayList(asList(exampleTest1, exampleTest2,
-          exampleTest3, exampleTest4, exampleTest5, exampleTest6));
-  List<List<Pixel>> lop2 =  new ArrayList(asList(exampleTest1, exampleTest2,
-          exampleTest3));
+  List<List<Pixel>> lop1 = new ArrayList<>(asList(
+          new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
+                  new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
+  List<List<Pixel>> lop2 =  new ArrayList<>(asList(
+          new ArrayList<>(asList(exampleTest1, exampleTest2)),
+          new ArrayList<>(asList(exampleTest3, exampleTest4))));
 
-  Image image1 = new ImageImpl(255, 2, 1, lop1);
-  Image image2 = new ImageImpl(70, 1, 1, lop2);
+  Image image1 = new ImageImpl(255, 3, 2, lop1);
+  Image image2 = new ImageImpl(70, 2, 2, lop2);
 
-  @Before
-  public void testConstructor(){
-    Image image1 = new ImageImpl(255, 2, 1, lop1);
-    Image image2 = new ImageImpl(70, 2, 1, lop2);
+  @Test (expected = IllegalArgumentException.class)
+  public void testConstructor1() {
+    this.image1 = new ImageImpl(255, 2, 2, null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testConstructor2() {
+    this.image1 = new ImageImpl(255, 3, 3, lop1);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testConstructor3() {
+    this.image1 = new ImageImpl(255, 2, 3, lop1);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testConstructor4() {
+    this.image1 = new ImageImpl(-1, 3, 2, lop1);
   }
 
   @Test
@@ -43,8 +57,8 @@ public class ImageTest {
 
   @Test
   public void testGetWidth(){
-    assertEquals(2, image1.getWidth());
-    assertEquals(1, image2.getWidth());
+    assertEquals(3, image1.getWidth());
+    assertEquals(2, image2.getWidth());
   }
 
   @Test
@@ -52,7 +66,4 @@ public class ImageTest {
     assertEquals(lop1, image1.getPixels());
     assertEquals(lop2, image2.getPixels());
   }
-
-
-
 }

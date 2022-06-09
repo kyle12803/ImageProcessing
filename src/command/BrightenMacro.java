@@ -20,9 +20,17 @@ public class BrightenMacro implements CommandMacro {
     for (int i = 0; i < this.image.getHeight(); i++) {
       for (int j = 0; j < this.image.getWidth(); j++) {
         Pixel pix = this.image.getPixels().get(i).get(j);
-        this.image.getPixels().get(i).set(j, new Pixel(pix.getR() + increment,
-                pix.getG() + increment, pix.getB() + increment));
+        this.image.getPixels().get(i).set(j,
+                new Pixel(checkComponent(pix.getR() + increment),
+                        checkComponent(pix.getG() + increment),
+                        checkComponent(pix.getB() + increment)));
       }
     }
+  }
+
+  private int checkComponent(int value) {
+    if (value < 0) {
+      return 0;
+    } else return Math.min(value, image.getMaxValue());
   }
 }

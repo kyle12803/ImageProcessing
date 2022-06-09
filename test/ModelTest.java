@@ -14,30 +14,46 @@ import model.ImageProcessingModelImpl;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
- * This class will test the model.
+ * Examples class of an image processing model used for testing purposes.
  */
 public class ModelTest {
-  Pixel exampleTest1 = new Pixel(50,60,70);
-  Pixel exampleTest2 = new Pixel(0,0,0);
-  Pixel exampleTest3 = new Pixel(60,60,60);
-  Pixel exampleTest4 = new Pixel(255,255,255);
-  Pixel exampleTest5 = new Pixel(300,25,25);
-  Pixel exampleTest6 = new Pixel(55,25,55);
-  List<List<Pixel>> lop1 = new ArrayList(asList(exampleTest1, exampleTest2,
-          exampleTest3, exampleTest4, exampleTest5, exampleTest6));
-  List<List<Pixel>> lop2 =  new ArrayList(asList(exampleTest1, exampleTest2,
-          exampleTest3));
-  Image image1 = new ImageImpl(255, 2, 1, lop1);
-  Image image2 = new ImageImpl(70, 1, 1, lop2);
+  Pixel exampleTest1;
+  Pixel exampleTest2;
+  Pixel exampleTest3;
+  Pixel exampleTest4;
+  Pixel exampleTest5;
+  Pixel exampleTest6;
+
+  List<List<Pixel>> lop1;
+  List<List<Pixel>> lop2;
+
+  Image image1;
+  Image image2;
 
 
-  ImageProcessingModel modelExample = new ImageProcessingModelImpl();
+  ImageProcessingModel modelExample;
 
   @Before
   public void testConstructor(){
-    ImageProcessingModel modelExample = new ImageProcessingModelImpl();
+    this.exampleTest1 = new Pixel(50,60,70);
+    this.exampleTest2 = new Pixel(0,0,0);
+    this.exampleTest3 = new Pixel(60,60,60);
+    this.exampleTest4 = new Pixel(255,255,255);
+    this.exampleTest5 = new Pixel(300,25,25);
+    this.exampleTest6 = new Pixel(55,25,55);
+    this.lop1 = new ArrayList<>(asList(
+            new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
+            new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
+    this.lop2 =  new ArrayList<>(asList(
+            new ArrayList<>(asList(exampleTest1, exampleTest2)),
+            new ArrayList<>(asList(exampleTest3, exampleTest4))));
+
+    this.image1 = new ImageImpl(255, 3, 2, lop1);
+    this.image2 = new ImageImpl(70, 2, 2, lop2);
+    this.modelExample = new ImageProcessingModelImpl();
   }
 
   @Test
@@ -79,15 +95,15 @@ public class ModelTest {
     CommandMacro blueGreyScaleMacroExample = new BlueGreyScaleMacro(image2);
     modelExample.addImage(image2, "Image 2");
     modelExample.execute(blueGreyScaleMacroExample);
-    assertEquals(true, exampleTest1.getR() == 70
+    assertTrue(exampleTest1.getR() == 70
             && exampleTest1.getG() == 70
             && exampleTest1.getB() == 70);
-    assertEquals(true, exampleTest2.getB() == 0
-    && exampleTest2.getR() == 0
-    && exampleTest3.getG() == 0);
-    assertEquals(true, exampleTest3.getB() == 60
-    && exampleTest2.getG() == 60
-    && exampleTest2.getR() == 60);
+    assertTrue(exampleTest2.getB() == 0
+            && exampleTest2.getR() == 0
+            && exampleTest3.getG() == 0);
+    assertTrue(exampleTest3.getB() == 60
+            && exampleTest2.getG() == 60
+            && exampleTest2.getR() == 60);
 
   }
 
