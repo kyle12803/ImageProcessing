@@ -51,13 +51,13 @@ public class GreenGreyScaleMacroTest {
   public void blueGreyScaleMacroTest2(){
     CommandMacro greenGreyScaleExample2 = new GreenGreyScaleMacro(image2);
     greenGreyScaleExample2.command();
-    assertEquals(exampleTest1.getR() == exampleTest1.getB(),
+    assertEquals(exampleTest1.getG() == exampleTest1.getB(),
             exampleTest1.getR() == exampleTest1.getG());
-    assertEquals(exampleTest2.getR() == exampleTest2.getB(),
+    assertEquals(exampleTest2.getG() == exampleTest2.getB(),
             exampleTest2.getR() == exampleTest2.getG());
-    assertEquals(exampleTest3.getR() == exampleTest3.getB(),
+    assertEquals(exampleTest3.getG() == exampleTest3.getB(),
             exampleTest3.getR() == exampleTest3.getG());
-    assertEquals(exampleTest4.getR() == exampleTest4.getB(),
+    assertEquals(exampleTest4.getG() == exampleTest4.getB(),
             exampleTest4.getR() == exampleTest4.getG());
   }
 

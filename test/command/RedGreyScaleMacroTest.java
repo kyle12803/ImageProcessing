@@ -42,8 +42,8 @@ public class RedGreyScaleMacroTest {
             exampleTest4.getR() == exampleTest4.getG());
     assertEquals(exampleTest5.getR() == exampleTest5.getB(),
             exampleTest5.getR() == exampleTest5.getG());
-    assertEquals(exampleTest6.getB() == exampleTest6.getR(),
-            exampleTest6.getB() == exampleTest6.getG());
+    assertEquals(exampleTest6.getR() == exampleTest6.getB(),
+            exampleTest6.getR() == exampleTest6.getG());
 
   }
 

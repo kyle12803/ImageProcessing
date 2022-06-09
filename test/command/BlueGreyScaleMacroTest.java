@@ -33,16 +33,16 @@ public class BlueGreyScaleMacroTest {
   public void blueGreyScaleMacroTest1(){
     CommandMacro blueGreyScaleExample1 = new BlueGreyScaleMacro(image1);
     blueGreyScaleExample1.command();
-    assertEquals(exampleTest1.getR() == exampleTest1.getB(),
-            exampleTest1.getR() == exampleTest1.getG());
+    assertEquals(exampleTest1.getB() == exampleTest1.getR(),
+            exampleTest1.getB() == exampleTest1.getG());
     assertEquals(exampleTest2.getR() == exampleTest2.getB(),
-            exampleTest2.getR() == exampleTest2.getG());
+            exampleTest2.getB() == exampleTest2.getG());
     assertEquals(exampleTest3.getR() == exampleTest3.getB(),
-            exampleTest3.getR() == exampleTest3.getG());
+            exampleTest3.getB() == exampleTest3.getG());
     assertEquals(exampleTest4.getR() == exampleTest4.getB(),
-            exampleTest4.getR() == exampleTest4.getG());
+            exampleTest4.getB() == exampleTest4.getG());
     assertEquals(exampleTest5.getR() == exampleTest5.getB(),
-            exampleTest5.getR() == exampleTest5.getG());
+            exampleTest5.getB() == exampleTest5.getG());
     assertEquals(exampleTest6.getB() == exampleTest6.getR(),
             exampleTest6.getB() == exampleTest6.getG());
 
@@ -53,13 +53,13 @@ public class BlueGreyScaleMacroTest {
     CommandMacro blueGreyScaleExample2 = new BlueGreyScaleMacro(image2);
     blueGreyScaleExample2.command();
     assertEquals(exampleTest1.getR() == exampleTest1.getB(),
-            exampleTest1.getR() == exampleTest1.getG());
+            exampleTest1.getB() == exampleTest1.getG());
     assertEquals(exampleTest2.getR() == exampleTest2.getB(),
-            exampleTest2.getR() == exampleTest2.getG());
+            exampleTest2.getB() == exampleTest2.getG());
     assertEquals(exampleTest3.getR() == exampleTest3.getB(),
-            exampleTest3.getR() == exampleTest3.getG());
+            exampleTest3.getB() == exampleTest3.getG());
     assertEquals(exampleTest4.getR() == exampleTest4.getB(),
-            exampleTest4.getR() == exampleTest4.getG());
+            exampleTest4.getB() == exampleTest4.getG());
   }
 
 
