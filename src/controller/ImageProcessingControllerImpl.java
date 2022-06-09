@@ -78,9 +78,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String path = line[1];
             String name = line[2];
             Image img = this.model.getImage(name);
-            String contents = "P3\n" + img.getHeight() + " " + img.getWidth() + " " + img.getMaxValue() + " "
-                    + img.getPixels();
-             new SaveFile().save(path, contents);
+            String contents = "P3\n" + img.getHeight() + " " + img.getWidth() + " "
+                    + img.getMaxValue() + " " + img.getPixels();
+            new SaveFile().save(path, contents);
           } catch (NoSuchElementException | IllegalArgumentException | IOException e) {
             throw new IllegalStateException();
           }
@@ -93,7 +93,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new RedGreyScaleMacro(this.model.getImage(imgName)));
+            this.model.execute(new RedGreyScaleMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -104,7 +104,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new GreenGreyScaleMacro(this.model.getImage(imgName)));
+            this.model.execute(new GreenGreyScaleMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -115,7 +115,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new BlueGreyScaleMacro(this.model.getImage(imgName)));
+            this.model.execute(new BlueGreyScaleMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -126,7 +126,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new ValueMacro(this.model.getImage(imgName)));
+            this.model.execute(new ValueMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -137,7 +137,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new IntensityMacro(this.model.getImage(imgName)));
+            this.model.execute(new IntensityMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -148,7 +148,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new LumaMacro(this.model.getImage(imgName)));
+            this.model.execute(new LumaMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -160,7 +160,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             int increment = Integer.parseInt(line[1]);
             String imgName = line[2];
             String destName = line[3];
-            this.model.execute(new BrightenMacro(this.model.getImage(imgName), increment));
+            this.model.execute(new BrightenMacro(this.model.clone(imgName, destName), increment));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -171,7 +171,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String imgName = line[1];
             String destName = line[2];
-            this.model.execute(new HorizontalFlipMacro(this.model.getImage(imgName)));
+            this.model.execute(new HorizontalFlipMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
@@ -183,7 +183,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             int increment = Integer.parseInt(line[1]);
             String imgName = line[2];
             String destName = line[3];
-            this.model.execute(new VerticalFlipMacro(this.model.getImage(imgName)));
+            this.model.execute(new VerticalFlipMacro(this.model.clone(imgName, destName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
