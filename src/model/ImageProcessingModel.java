@@ -31,7 +31,6 @@ public interface ImageProcessingModel {
    * This is the method where we will call the macro on the model.
    *
    * @param commandMacro the command passed in which we will execute on the model.
-   * @param key          the name of the image to be used
    */
-  void execute(CommandMacro commandMacro, String key);
+  void execute(CommandMacro commandMacro);
 }

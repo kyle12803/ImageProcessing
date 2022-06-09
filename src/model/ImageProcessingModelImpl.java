@@ -41,7 +41,7 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   }
 
   @Override
-  public void execute(CommandMacro commandMacro, String key) {
-    commandMacro.command(this.moi.get(key));
+  public void execute(CommandMacro commandMacro) {
+    commandMacro.command();
   }
 }
