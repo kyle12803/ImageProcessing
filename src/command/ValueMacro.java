@@ -8,14 +8,20 @@ import image.Pixel;
  * rgb component.
  */
 public class ValueMacro implements CommandMacro {
+  private final Image image;
+
+  public ValueMacro(Image image) {
+    this.image = image;
+  }
+
   @Override
-  public void command(Image image) {
-    for (int i = 0; i < image.getHeight(); i++) {
-      for (int j = 0; j < image.getWidth(); j++) {
-        int val = Math.max(image.getPixels().get(i).get(j).getR(),
-                Math.max(image.getPixels().get(i).get(j).getG(),
-                        image.getPixels().get(i).get(j).getB()));
-        image.getPixels().get(i).set(j, new Pixel(val, val, val));
+  public void command() {
+    for (int i = 0; i < this.image.getHeight(); i++) {
+      for (int j = 0; j < this.image.getWidth(); j++) {
+        int val = Math.max(this.image.getPixels().get(i).get(j).getR(),
+                Math.max(this.image.getPixels().get(i).get(j).getG(),
+                        this.image.getPixels().get(i).get(j).getB()));
+        this.image.getPixels().get(i).set(j, new Pixel(val, val, val));
       }
     }
   }

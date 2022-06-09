@@ -8,9 +8,7 @@ import model.ImageProcessingModel;
  */
 public interface CommandMacro {
   /**
-   * This method takes in an image and runs a command on it.
-   *
-   * @param image This is the image passed in.
+   * This method runs a specific command on an image.
    */
-  void command(Image image);
+  void command();
 }

@@ -7,14 +7,15 @@ import image.Pixel;
  * Represents the greyscale by setting all rgb values to the corresponding pixel's blue component.
  */
 public class BlueGreyScaleMacro implements CommandMacro {
-
-  public BlueGreyScaleMacro() {
+  private final Image image;
+  public BlueGreyScaleMacro(Image image) {
+    this.image = image;
   }
 
   @Override
-  public void command(Image image) {
-    for (int i = 0; i < image.getHeight(); i++) {
-      for (int j = 0; j < image.getWidth(); j++) {
+  public void command() {
+    for (int i = 0; i < this.image.getHeight(); i++) {
+      for (int j = 0; j < this.image.getWidth(); j++) {
         int val = image.getPixels().get(i).get(j).getB();
         image.getPixels().get(i).set(j, new Pixel(val, val, val));
       }

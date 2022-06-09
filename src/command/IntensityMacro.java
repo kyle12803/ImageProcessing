@@ -8,13 +8,19 @@ import image.Pixel;
  * rgb component.
  */
 public class IntensityMacro implements CommandMacro {
+  private final Image image;
+
+  public IntensityMacro(Image image) {
+    this.image = image;
+  }
+
   @Override
-  public void command(Image image) {
-    for (int i = 0; i < image.getHeight(); i++) {
-      for (int j = 0; j < image.getWidth(); j++) {
-        Pixel pix = image.getPixels().get(i).get(j);
+  public void command() {
+    for (int i = 0; i < this.image.getHeight(); i++) {
+      for (int j = 0; j < this.image.getWidth(); j++) {
+        Pixel pix = this.image.getPixels().get(i).get(j);
         int val = (pix.getR() + pix.getG() + pix.getB()) / 3;
-        image.getPixels().get(i).set(j, new Pixel(val, val, val));
+        this.image.getPixels().get(i).set(j, new Pixel(val, val, val));
       }
     }
   }
