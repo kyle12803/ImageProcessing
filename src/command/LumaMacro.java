@@ -8,9 +8,13 @@ import image.Pixel;
  * value to the nearest integer.
  */
 public class LumaMacro implements CommandMacro {
+  private final Image image;
 
+  public LumaMacro(Image image) {
+    this.image = image;
+  }
   @Override
-  public void command(Image image) {
+  public void command() {
     for (int i = 0; i < image.getHeight(); i++) {
       for (int j = 0; j < image.getWidth(); j++) {
         Pixel pix = image.getPixels().get(i).get(j);

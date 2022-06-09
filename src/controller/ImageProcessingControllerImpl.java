@@ -4,7 +4,18 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import command.BlueGreyScaleMacro;
+import command.BrightenMacro;
+import command.GreenGreyScaleMacro;
+import command.HorizontalFlipMacro;
+import command.IntensityMacro;
+import command.LumaMacro;
+import command.RedGreyScaleMacro;
+import command.ValueMacro;
+import command.VerticalFlipMacro;
 import file.LoadFIle;
+import file.SaveFile;
+import image.Image;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
@@ -12,7 +23,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private Readable rd;
   private ImageProcessingModel model;
   private ImageProcessingView view;
-
 
   public ImageProcessingControllerImpl(Readable rd, ImageProcessingModel model,
                                        ImageProcessingView view) throws IllegalArgumentException {
@@ -50,25 +60,135 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private void processCommand(String[] line, Scanner sc, ImageProcessingModel model) {
     switch (line[0]) {
       case "load":
-        if (line.length ==3) {
+        if (line.length == 3) {
           try {
-            String path = sc.next();
-            String name = sc.next();
-            this.model.addImage(new LoadFIle().perform(path), name);
+            String path = line[1];
+            String name = line[2];
+            this.model.addImage(new LoadFIle().load(path), name);
           } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new IllegalStateException();
           }
         } else {
-          
+          writeMessage("Invalid operation! Please try again.\n");
+        }
+        break;
+      case "save":
+        if (line.length == 3) {
+          try {
+            String path = line[1];
+            String name = line[2];
+            Image img = this.model.getImage(name);
+            String contents = "P3\n" + img.getHeight() + " " + img.getWidth() + " " + img.getMaxValue() + " "
+                    + img.getPixels();
+             new SaveFile().save(path, contents);
+          } catch (NoSuchElementException | IllegalArgumentException | IOException e) {
+            throw new IllegalStateException();
+          }
+        } else {
+          writeMessage("Invalid operation! Please try again.\n");
         }
         break;
       case "red-component":
-        try {
-
-        } catch () {
-
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new RedGreyScaleMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
         }
-
+        break;
+      case "green-component":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new GreenGreyScaleMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "blue-component":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new BlueGreyScaleMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "value-component":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new ValueMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "intensity-component":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new IntensityMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "luma-component":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new LumaMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "brighten":
+        if (line.length == 4) {
+          try {
+            int increment = Integer.parseInt(line[1]);
+            String imgName = line[2];
+            String destName = line[3];
+            this.model.execute(new BrightenMacro(this.model.getImage(imgName), increment));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "horizontal-flip":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new HorizontalFlipMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
+      case "vertical-flip":
+        if (line.length == 4) {
+          try {
+            int increment = Integer.parseInt(line[1]);
+            String imgName = line[2];
+            String destName = line[3];
+            this.model.execute(new VerticalFlipMacro(this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            throw new IllegalStateException();
+          }
+        }
+        break;
     }
   }
 

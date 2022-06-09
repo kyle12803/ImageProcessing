@@ -9,16 +9,18 @@ import image.Pixel;
  */
 public class BrightenMacro implements CommandMacro {
   private final int increment;
+  private final Image image;
 
-  public BrightenMacro(int increment) {
+  public BrightenMacro(Image image, int increment) {
+    this.image = image;
     this.increment = increment;
   }
 
-  public void command(Image image) {
-    for (int i = 0; i < image.getHeight(); i++) {
-      for (int j = 0; j < image.getWidth(); j++) {
-        Pixel pix = image.getPixels().get(i).get(j);
-        image.getPixels().get(i).set(j, new Pixel(pix.getR() + increment,
+  public void command() {
+    for (int i = 0; i < this.image.getHeight(); i++) {
+      for (int j = 0; j < this.image.getWidth(); j++) {
+        Pixel pix = this.image.getPixels().get(i).get(j);
+        this.image.getPixels().get(i).set(j, new Pixel(pix.getR() + increment,
                 pix.getG() + increment, pix.getB() + increment));
       }
     }

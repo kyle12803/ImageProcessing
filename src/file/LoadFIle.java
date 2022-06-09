@@ -12,10 +12,9 @@ import image.Pixel;
 
 // load get-file return-image add(image, name)
 // save get-image return-
-public class LoadFIle implements FileCommand {
+public class LoadFIle {
 
-  @Override
-  public Image perform(String filename) throws IllegalArgumentException {
+  public Image load(String filename) throws IllegalArgumentException {
     Scanner sc;
 
     try {
