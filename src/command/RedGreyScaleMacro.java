@@ -10,6 +10,11 @@ import image.Pixel;
 public class RedGreyScaleMacro implements CommandMacro {
   private final Image image;
 
+  /**
+   * This is the constructor for the red grey scale macro.
+   *
+   * @param image - this is the image to run it on.
+   */
   public RedGreyScaleMacro(Image image) {
     this.image = image;
   }

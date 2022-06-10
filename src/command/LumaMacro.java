@@ -10,9 +10,15 @@ import image.Pixel;
 public class LumaMacro implements CommandMacro {
   private final Image image;
 
+  /**
+   * This is the constructor to run the luma macro.
+   *
+   * @param image - this is the image for the luma macro to run on.
+   */
   public LumaMacro(Image image) {
     this.image = image;
   }
+
   @Override
   public void command() {
     for (int i = 0; i < image.getHeight(); i++) {

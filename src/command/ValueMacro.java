@@ -10,6 +10,11 @@ import image.Pixel;
 public class ValueMacro implements CommandMacro {
   private final Image image;
 
+  /**
+   * This is the constructor for the value macro.
+   *
+   * @param image - this is the image to be run the command on.
+   */
   public ValueMacro(Image image) {
     this.image = image;
   }
