@@ -1,13 +1,9 @@
 package model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import command.CommandMacro;
 import image.Image;
@@ -43,6 +39,9 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
 
   @Override
   public Image clone(String image, String dest) throws IllegalArgumentException {
+    if (dest == null) {
+      throw new IllegalArgumentException("Null destination name.");
+    }
     Image img = this.getImage(image);
     int max = img.getMaxValue();
     int width = img.getWidth();

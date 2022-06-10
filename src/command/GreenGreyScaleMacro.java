@@ -9,9 +9,15 @@ import image.Pixel;
 public class GreenGreyScaleMacro implements CommandMacro {
   private final Image image;
 
+  /**
+   * This is the constructor for a green grey scale macro.
+   *
+   * @param image - the image to run command on.
+   */
   public GreenGreyScaleMacro(Image image) {
     this.image = image;
   }
+
   @Override
   public void command() {
     for (int i = 0; i < this.image.getHeight(); i++) {

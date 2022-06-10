@@ -16,7 +16,7 @@ public class Pixel {
    * @param blue  the value of blue
    * @throws IllegalArgumentException if any of the components are negative
    */
-  public Pixel(int red, int green, int blue) throws IllegalArgumentException{
+  public Pixel(int red, int green, int blue) throws IllegalArgumentException {
     if (red < 0 || green < 0 || blue < 0) {
       throw new IllegalArgumentException("Invalid RGB components.");
     }
@@ -25,14 +25,29 @@ public class Pixel {
     this.blue = blue;
   }
 
+  /**
+   * Gets red component of the pixel.
+   *
+   * @return integer of red component.
+   */
   public int getR() {
     return this.red;
   }
 
+  /**
+   * Gets green component of the pixel.
+   *
+   * @return integer of green component.
+   */
   public int getG() {
     return this.green;
   }
 
+  /**
+   * Gets blue component of the pixel.
+   *
+   * @return integer of blue component.
+   */
   public int getB() {
     return this.blue;
   }

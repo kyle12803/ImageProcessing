@@ -8,6 +8,12 @@ import image.Pixel;
  */
 public class BlueGreyScaleMacro implements CommandMacro {
   private final Image image;
+
+  /**
+   * Constructs a blue grey scale macro with the given image.
+   *
+   * @param image the image to perform the macro on
+   */
   public BlueGreyScaleMacro(Image image) {
     this.image = image;
   }

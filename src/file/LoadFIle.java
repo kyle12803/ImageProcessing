@@ -10,10 +10,18 @@ import image.Image;
 import image.ImageImpl;
 import image.Pixel;
 
-// load get-file return-image add(image, name)
-// save get-image return-
+/**
+ * This is the method to load a file.
+ */
 public class LoadFIle {
 
+  /**
+   * This is the method to load an image within our program.
+   *
+   * @param filename - this is the file name of the file we want to load.
+   * @return - an image is returned after loading.
+   * @throws IllegalArgumentException - this is thrown if the name or image is null.
+   */
   public Image load(String filename) throws IllegalArgumentException {
     Scanner sc;
 
