@@ -120,13 +120,93 @@ public class ControllerTest {
             "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
-            "Type instruction: Invalid operation! Please try again." +  "\n" +
+            "Type instruction: Invalid operation! Please try again." + "\n" +
+            "Thank you for using this program!", this.ap.toString());
+  }
+
+  @Test
+  public void testRunLoad() {
+    this.rd = new StringReader("load res/grandma.ppm grandma");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Thank you for using this program!", this.ap.toString());
+  }
+
+  @Test
+  public void testRunProgramSave() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "red-component grandma redGrandma \n" +
+            "save res/grandma redGrandma \n"
+            + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+                    "Supported user instructions are: " + System.lineSeparator() +
+                    "load [image-path] [image-name]" + System.lineSeparator() +
+                    "save [image-path] [image-name]" + System.lineSeparator() +
+                    "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "value [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "q or quit (quit the program) " + System.lineSeparator() +
+                    "Type instruction: Type instruction: Type instruction: Type instruction: " +
+                    "Thank you for using this program!",
+            this.ap.toString());
+  }
+
+  @Test
+  public void testRunProgramBlue() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "blue-component grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
             "Thank you for using this program!", this.ap.toString());
   }
 
   @Test
   public void testRunProgramRed() {
-    this.rd = new StringReader("red-component first firstRed q");
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "red-component grandma redGrandma \n" + "q");
     this.ap = new StringBuilder();
     this.view = new ImageProcessingViewImpl(ap);
     this.controller = new ImageProcessingControllerImpl(rd, model, view);
@@ -145,13 +225,14 @@ public class ControllerTest {
             "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
-            "Type instruction: Invalid operation! Please try again." +  "\n" +
+            "Type instruction: Type instruction: Type instruction: " +
             "Thank you for using this program!", this.ap.toString());
   }
 
   @Test
-  public void testRunProgramNull() {
-    this.rd = new StringReader("green-component first first-green q");
+  public void testRunProgramGreen() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "green-component grandma redGrandma \n" + "q");
     this.ap = new StringBuilder();
     this.view = new ImageProcessingViewImpl(ap);
     this.controller = new ImageProcessingControllerImpl(rd, model, view);
@@ -170,9 +251,137 @@ public class ControllerTest {
             "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
-            "Type instruction: Invalid operation! Please try again." +  "\n" +
+            "Type instruction: Type instruction: Type instruction: " +
             "Thank you for using this program!", this.ap.toString());
   }
 
+  @Test
+  public void testRunProgramValue() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "value grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
+            "Thank you for using this program!", this.ap.toString());
+  }
 
+  @Test
+  public void testRunProgramIntensity() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "intensity grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
+            "Thank you for using this program!", this.ap.toString());
+  }
+
+  @Test
+  public void testRunProgramHorizontalFlip() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "horizontal-flip grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
+            "Thank you for using this program!", this.ap.toString());
+  }
+
+  @Test
+  public void testRunProgramVerticalFlip() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "vertical-flip grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
+            "Thank you for using this program!", this.ap.toString());
+  }
+
+  @Test
+  public void testRunProgramBrighten() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "brighten 10 grandma redGrandma \n" + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+            "Supported user instructions are: " + System.lineSeparator() +
+            "load [image-path] [image-name]" + System.lineSeparator() +
+            "save [image-path] [image-name]" + System.lineSeparator() +
+            "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+            "value [image-name] [dest-image-name]" + System.lineSeparator() +
+            "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+            "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+            "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+            "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "q or quit (quit the program) " + System.lineSeparator() +
+            "Type instruction: Type instruction: Type instruction: " +
+            "Thank you for using this program!", this.ap.toString());
+  }
 }

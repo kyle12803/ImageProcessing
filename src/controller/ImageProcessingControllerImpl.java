@@ -104,14 +104,15 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
                         .append(" ")
                         .append(pix.getG())
                         .append(" ")
-                        .append(pix.getB()
-                        ).append(" ");
+                        .append(pix.getB())
+                        .append(" ");
               }
             }
             String contents = "P3\n" + " " + img.getWidth() + " " + img.getHeight() + " "
                     + img.getMaxValue() + " " + rgbs.toString();
             new SaveFile().save(path, contents);
-          } catch (NoSuchElementException | IllegalArgumentException | IOException e) {
+          } catch (NullPointerException | NoSuchElementException | IllegalArgumentException
+                   | IOException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
         } else {
@@ -157,7 +158,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "value-component":
+      case "value":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -170,7 +171,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "intensity-component":
+      case "intensity":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -183,7 +184,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "luma-component":
+      case "luma":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -237,6 +238,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         }
         break;
       default:
+        writeMessage("Invalid operation! Please try again.\n");
     }
   }
 
