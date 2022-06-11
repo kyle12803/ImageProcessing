@@ -11,11 +11,18 @@ public class BrightenMacro implements CommandMacro {
   private final int increment;
   private final Image image;
 
+  /**
+   * Constructor for the brighten macro.
+   *
+   * @param image     image needed to run the command on.
+   * @param increment - the increment on which the image will be brightened.
+   */
   public BrightenMacro(Image image, int increment) {
     this.image = image;
     this.increment = increment;
   }
 
+  @Override
   public void command() {
     for (int i = 0; i < this.image.getHeight(); i++) {
       for (int j = 0; j < this.image.getWidth(); j++) {
@@ -28,9 +35,17 @@ public class BrightenMacro implements CommandMacro {
     }
   }
 
+  /**
+   * This takes care of the max value and 0 rule for brighten.
+   *
+   * @param value - the value of the brightened pixel.
+   * @return - the int if its not less than 0 or more than 255 or either 0 or 255.
+   */
   private int checkComponent(int value) {
     if (value < 0) {
       return 0;
-    } else return Math.min(value, image.getMaxValue());
+    } else {
+      return Math.min(value, image.getMaxValue());
+    }
   }
 }

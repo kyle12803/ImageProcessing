@@ -2,7 +2,6 @@ package view;
 
 import java.io.IOException;
 
-import controller.ImageProcessingControllerImpl;
 
 /**
  * Represents the text based view that a client will see when the image processor is run.
