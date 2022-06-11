@@ -21,7 +21,8 @@ import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This is the class for the controller which implements our interface and works with the model.
+ * This is the class for the controller which implements our interface and works
+ * with the model.
  */
 public class ImageProcessingControllerImpl implements ImageProcessingController {
   private final Readable rd;
@@ -37,7 +38,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @throws IllegalArgumentException if any arguments are null.
    */
   public ImageProcessingControllerImpl(Readable rd, ImageProcessingModel model,
-                                       ImageProcessingView view) throws IllegalArgumentException {
+      ImageProcessingView view) throws IllegalArgumentException {
     if (rd == null || model == null || view == null) {
       throw new IllegalArgumentException("Readable or model is null.");
     }
@@ -51,11 +52,11 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     Scanner sc = new Scanner(rd);
     boolean quit = false;
 
-    //print the welcome message
+    // print the welcome message
     this.welcomeMessage();
 
-    while (!quit && sc.hasNext()) { //continue until the user quits
-      writeMessage("Type instruction: "); //prompt for the instruction name
+    while (!quit && sc.hasNext()) { // continue until the user quits
+      writeMessage("Type instruction: "); // prompt for the instruction name
       String[] line = sc.nextLine().split(" ");
       if (line[0].equals("quit") || line[0].equalsIgnoreCase("q")) {
         quit = true;
@@ -64,7 +65,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       }
     }
 
-    //after the user has quit, print farewell message
+    // after the user has quit, print farewell message
     this.farewellMessage();
 
   }
@@ -101,17 +102,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               for (int j = 0; j < img.getWidth(); j++) {
                 Pixel pix = img.getPixels().get(i).get(j);
                 rgbs.append(pix.getR())
-                        .append(" ")
-                        .append(pix.getB())
-                        .append(" ")
-                        .append(pix.getB()
-                        ).append(" ");
+                    .append(" ")
+                    .append(pix.getG())
+                    .append(" ")
+                    .append(pix.getB())
+                    .append(" ");
               }
             }
-            String contents = "P3\n" + img.getHeight() + " " + img.getWidth() + " "
-                    + img.getMaxValue() + " " + rgbs.toString();
+            String contents = "P3\n" + " " + img.getWidth() + " " + img.getHeight() + " "
+                + img.getMaxValue() + " " + rgbs.toString();
             new SaveFile().save(path, contents);
-          } catch (NoSuchElementException | IllegalArgumentException | IOException e) {
+          } catch (NullPointerException | NoSuchElementException | IllegalArgumentException
+              | IOException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
         } else {
@@ -157,7 +159,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "value-component":
+      case "value":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -170,7 +172,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "intensity-component":
+      case "intensity":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -183,7 +185,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "luma-component":
+      case "luma":
         if (line.length == 3) {
           try {
             String imgName = line[1];
@@ -237,6 +239,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         }
         break;
       default:
+        writeMessage("Invalid operation! Please try again.\n");
     }
   }
 
@@ -246,7 +249,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @throws IllegalStateException - thrown if anything is null.
    */
   private void welcomeMessage() throws IllegalStateException {
-    writeMessage("Welcome to the spreadsheet program!" + System.lineSeparator());
+    writeMessage("Welcome to the image processing program!" + System.lineSeparator());
     printMenu();
   }
 
@@ -268,7 +271,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     writeMessage("horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("vertical-flip [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("brighten [increment] [image-name] [dest-image-name]"
-            + System.lineSeparator());
+        + System.lineSeparator());
     writeMessage("q or quit (quit the program) " + System.lineSeparator());
 
   }

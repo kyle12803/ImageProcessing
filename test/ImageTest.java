@@ -11,7 +11,8 @@ import image.ImageImpl;
 import image.Pixel;
 
 /**
- * This test class makes sure everything within an image class works as intended.
+ * This test class makes sure everything within an image class works as
+ * intended.
  */
 public class ImageTest {
   Pixel exampleTest1 = new Pixel(50, 60, 70);
@@ -21,13 +22,12 @@ public class ImageTest {
   Pixel exampleTest5 = new Pixel(300, 25, 25);
   Pixel exampleTest6 = new Pixel(55, 25, 55);
 
-
   List<List<Pixel>> lop1 = new ArrayList<>(asList(
-          new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
-          new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
+      new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
+      new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
   List<List<Pixel>> lop2 = new ArrayList<>(asList(
-          new ArrayList<>(asList(exampleTest1, exampleTest2)),
-          new ArrayList<>(asList(exampleTest3, exampleTest4))));
+      new ArrayList<>(asList(exampleTest1, exampleTest2)),
+      new ArrayList<>(asList(exampleTest3, exampleTest4))));
 
   Image image1 = new ImageImpl(255, 3, 2, lop1);
   Image image2 = new ImageImpl(70, 2, 2, lop2);

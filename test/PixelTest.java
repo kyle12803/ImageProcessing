@@ -2,11 +2,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-
 import image.Pixel;
 
 /**
- * This test class makes sure that everything within a Pixel class works properly.
+ * This test class makes sure that everything within a Pixel class works
+ * properly.
  */
 public class PixelTest {
 
