@@ -5,12 +5,15 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import command.BlueGreyScaleMacro;
+import command.BlurMacro;
 import command.BrightenMacro;
 import command.GreenGreyScaleMacro;
 import command.HorizontalFlipMacro;
 import command.IntensityMacro;
 import command.LumaMacro;
 import command.RedGreyScaleMacro;
+import command.SepiaMacro;
+import command.SharpenMacro;
 import command.ValueMacro;
 import command.VerticalFlipMacro;
 import file.LoadFIle;
@@ -38,7 +41,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @throws IllegalArgumentException if any arguments are null.
    */
   public ImageProcessingControllerImpl(Readable rd, ImageProcessingModel model,
-      ImageProcessingView view) throws IllegalArgumentException {
+                                       ImageProcessingView view) throws IllegalArgumentException {
     if (rd == null || model == null || view == null) {
       throw new IllegalArgumentException("Readable or model is null.");
     }
@@ -60,7 +63,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       String[] line = sc.nextLine().split(" ");
       if (line[0].equals("quit") || line[0].equalsIgnoreCase("q")) {
         quit = true;
-      } else {
+      } else if (line[0].equals("menu") || line[0].equalsIgnoreCase("m")) {
+        printMenu();
+      }else {
         processCommand(line, model);
       }
     }
@@ -102,18 +107,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               for (int j = 0; j < img.getWidth(); j++) {
                 Pixel pix = img.getPixels().get(i).get(j);
                 rgbs.append(pix.getR())
-                    .append(" ")
-                    .append(pix.getG())
-                    .append(" ")
-                    .append(pix.getB())
-                    .append(" ");
+                        .append(" ")
+                        .append(pix.getG())
+                        .append(" ")
+                        .append(pix.getB())
+                        .append(" ");
               }
             }
             String contents = "P3\n" + " " + img.getWidth() + " " + img.getHeight() + " "
-                + img.getMaxValue() + " " + rgbs.toString();
+                    + img.getMaxValue() + " " + rgbs.toString();
             new SaveFile().save(path, contents);
           } catch (NullPointerException | NoSuchElementException | IllegalArgumentException
-              | IOException e) {
+                   | IOException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
         } else {
@@ -198,6 +203,19 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
+      case "sepia":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new SepiaMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else {
+          writeMessage("Invalid operation! Please try again.\n");
+        }
+        break;
       case "brighten":
         if (line.length == 4) {
           try {
@@ -238,6 +256,32 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
+      case "blur":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new BlurMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else {
+          writeMessage("Invalid operation! Please try again.\n");
+        }
+        break;
+      case "sharpen":
+        if (line.length == 3) {
+          try {
+            String imgName = line[1];
+            String destName = line[2];
+            this.model.execute(new SharpenMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else {
+          writeMessage("Invalid operation! Please try again.\n");
+        }
+        break;
       default:
         writeMessage("Invalid operation! Please try again.\n");
     }
@@ -270,9 +314,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     writeMessage("intensity [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("vertical-flip [image-name] [dest-image-name]" + System.lineSeparator());
+    writeMessage("blur [image-name] [dest-image-name]" + System.lineSeparator());
+    writeMessage("sharpen [image-name] [dest-image-name]" + System.lineSeparator());
+    writeMessage("sepia [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("brighten [increment] [image-name] [dest-image-name]"
-        + System.lineSeparator());
+            + System.lineSeparator());
     writeMessage("q or quit (quit the program) " + System.lineSeparator());
+    writeMessage("m or menu (prints the supported instructions menu) "
+            + System.lineSeparator());
 
   }
 
