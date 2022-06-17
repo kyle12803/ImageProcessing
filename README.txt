@@ -1,6 +1,6 @@
 We use a model view controller implementation to create our image processing program.
 
-To use the program, run the Program file and follow the instructions.
+To use the program, run the Program file and follow the instructions. A script file can 
 
 We have an Image interface which gets the values for an image.
 We also implemented an Image class and a Pixels class to fully represent an image.
@@ -13,8 +13,8 @@ The command interface runs a command on an image.
 Every class within the package command has the arithmetic to properly have the command behave as intended.
 
 Our File folder saves and loads our files.
-The load class loads an image.
-The save class saves an image.
+The load class loads an image depending on the given type of format.
+The save class saves an image depending on the type of wanted image format.
 
 Our model folder has the interface for an image processing model.
 This sets the contract to get an image, add an image, clone an image, and the model executes commands.

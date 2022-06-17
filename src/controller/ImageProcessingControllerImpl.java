@@ -18,8 +18,6 @@ import command.ValueMacro;
 import command.VerticalFlipMacro;
 import file.LoadFIle;
 import file.SaveFile;
-import image.Image;
-import image.Pixel;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
@@ -101,22 +99,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String path = line[1];
             String name = line[2];
-            Image img = this.model.getImage(name);
-            StringBuilder rgbs = new StringBuilder();
-            for (int i = 0; i < img.getHeight(); i++) {
-              for (int j = 0; j < img.getWidth(); j++) {
-                Pixel pix = img.getPixels().get(i).get(j);
-                rgbs.append(pix.getR())
-                        .append(" ")
-                        .append(pix.getG())
-                        .append(" ")
-                        .append(pix.getB())
-                        .append(" ");
-              }
-            }
-            String contents = "P3\n" + " " + img.getWidth() + " " + img.getHeight() + " "
-                    + img.getMaxValue() + " " + rgbs.toString();
-            new SaveFile().save(path, contents);
+            new SaveFile(this.model.getImage(name)).save(path);
           } catch (NullPointerException | NoSuchElementException | IllegalArgumentException
                    | IOException e) {
             writeMessage("Invalid operation! Please try again.\n");
