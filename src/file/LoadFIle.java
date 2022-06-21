@@ -18,7 +18,7 @@ import image.Pixel;
 /**
  * This is the class to load a file.
  */
-public class LoadFIle {
+public class LoadFile {
 
   /**
    * This is the method to load an image within our program.

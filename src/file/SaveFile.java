@@ -14,7 +14,6 @@ import javax.imageio.ImageIO;
 
 import image.Pixel;
 
-
 /**
  * This is the class needed to save a file.
  */
@@ -51,7 +50,8 @@ public class SaveFile {
                         .append(" ");
               }
             }
-            String contents = "P3\n" + " " + this.image.getWidth() + " " + this.image.getHeight() + " "
+            String contents = "P3\n" + " " + this.image.getWidth() + " " +
+                    this.image.getHeight() + " "
                     + this.image.getMaxValue() + " " + rgbs.toString();
             byte[] array = contents.getBytes();
             // Writes byte to the file

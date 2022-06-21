@@ -708,4 +708,36 @@ public class ControllerTest {
                     "Thank you for using this program!",
             this.ap.toString());
   }
+  @Test
+  public void testRunProgramDownsize() {
+    this.rd = new StringReader("load res/grandma.ppm grandma \n" +
+            "downsize 50 grandma downsize \n" +
+            "save res/downsize.ppm downsize \n"
+            + "q");
+    this.ap = new StringBuilder();
+    this.view = new ImageProcessingViewImpl(ap);
+    this.controller = new ImageProcessingControllerImpl(rd, model, view);
+    controller.runProgram();
+    assertEquals("Welcome to the image processing program!" + System.lineSeparator() +
+                    "Supported user instructions are: " + System.lineSeparator() +
+                    "load [image-path] [image-name]" + System.lineSeparator() +
+                    "save [image-path] [image-name]" + System.lineSeparator() +
+                    "red-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "green-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "blue-component [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "value [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "luma [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "intensity [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "horizontal-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "vertical-flip [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "blur [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "q or quit (quit the program) " + System.lineSeparator() +
+                    "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
+                    "Type instruction: Type instruction: Type instruction: Type instruction: " +
+                    "Thank you for using this program!",
+            this.ap.toString());
+  }
 }

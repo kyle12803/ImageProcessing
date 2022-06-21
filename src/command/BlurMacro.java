@@ -13,7 +13,10 @@ public class BlurMacro extends AbstractFilter {
    * @param image the image to be blurred
    */
   public BlurMacro(Image image) {
-    super(image, new double[][]
-            {{0.0625, 0.125, 0.0625}, {0.125, 0.25, 0.125}, {0.0625, 0.125, 0.0625}});
+    super(image, new double[][]{
+            {0.0625, 0.125, 0.0625},
+            {0.125, 0.25, 0.125},
+            {0.0625, 0.125, 0.0625}
+    });
   }
 }

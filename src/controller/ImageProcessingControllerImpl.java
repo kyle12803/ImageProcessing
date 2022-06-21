@@ -7,6 +7,7 @@ import java.util.Scanner;
 import command.BlueGreyScaleMacro;
 import command.BlurMacro;
 import command.BrightenMacro;
+import command.Downsize;
 import command.GreenGreyScaleMacro;
 import command.HorizontalFlipMacro;
 import command.IntensityMacro;
@@ -16,8 +17,9 @@ import command.SepiaMacro;
 import command.SharpenMacro;
 import command.ValueMacro;
 import command.VerticalFlipMacro;
-import file.LoadFIle;
+import file.LoadFile;
 import file.SaveFile;
+import image.Image;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
@@ -86,7 +88,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String path = line[1];
             String name = line[2];
-            this.model.addImage(new LoadFIle().load(path), name);
+            this.model.addImage(new LoadFile().load(path), name);
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
@@ -258,6 +260,21 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String imgName = line[1];
             String destName = line[2];
             this.model.execute(new SharpenMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else {
+          writeMessage("Invalid operation! Please try again.\n");
+        }
+        break;
+      case "downsize":
+        if (line.length == 4) {
+          try {
+            double scale = Double.parseDouble(line[1]);
+            String imgName = line[2];
+            String destName = line[3];
+            Image newImage = new Downsize(this.model.getImage(imgName), scale).resize();
+            this.model.addImage(newImage, destName);
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }

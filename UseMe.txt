@@ -7,7 +7,7 @@ In order to run our program please follow these simple steps.
 3. If a script is not being used, please first type load into the console as instructed in the instructions menu to load the image you would like to use.
 4. Then, following our menu of commands, modify the image you have loaded in any way you want.
 5. After all modifications have been applied, save the image under the supported png/jpg/bmp/ppm formats.
-6. Type q or quit into the console to quit!
+
 
 
 Supported user instructions are: 
@@ -26,6 +26,5 @@ sharpen [image-name] [dest-image-name]
 sepia [image-name] [dest-image-name]
 brighten [increment] [image-name] [dest-image-name]
 q or quit (quit the program) 
-m or menu (prints the supported instructions menu) 
-
+m or menu (prints the supported instructions menu)
 Enjoy!
