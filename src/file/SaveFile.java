@@ -2,21 +2,18 @@ package file;
 
 import image.Image;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import image.Pixel;
-import model.ImageProcessingModel;
+
 
 /**
  * This is the class needed to save a file.

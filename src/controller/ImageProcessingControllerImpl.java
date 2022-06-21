@@ -63,7 +63,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         quit = true;
       } else if (line[0].equals("menu") || line[0].equalsIgnoreCase("m")) {
         printMenu();
-      }else {
+      } else {
         processCommand(line, model);
       }
     }
