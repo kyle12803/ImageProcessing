@@ -7,6 +7,10 @@ import image.Image;
 import image.ImageImpl;
 import image.Pixel;
 
+/**
+ * Represents a downscale function which downsizes an image by altering the width, height, and
+ * pixels.
+ */
 public class Downsize {
   private final Image image;
   private final double scale;
@@ -34,14 +38,15 @@ public class Downsize {
    */
   public Image resize() {
     // do we need this math.round?
-    int newWidth = (int) Math.round(scale * this.image.getWidth());
-    int newHeight = (int) Math.round(scale * this.image.getHeight());
+    int newWidth = (int) ((1.0 - scale / 100) * this.image.getWidth());
+    int newHeight = (int) ((1.0 - scale / 100) * this.image.getHeight());
 
     List<List<Pixel>> lop = new ArrayList<>();
     for (int i = 0; i < newHeight; i++) {
       List<Pixel> row = new ArrayList<>();
       for (int j = 0; j < newWidth; j++) {
-        row.add(pixelConverter( i * this.image.getHeight() / (double) newHeight,
+        // x = (x' / w') * w
+        row.add(pixelConverter(i * this.image.getHeight() / (double) newHeight,
                 j * this.image.getWidth() / (double) newWidth));
       }
       lop.add(row);
@@ -55,17 +60,17 @@ public class Downsize {
     Pixel C = this.image.getPixels().get((int) Math.floor(i)).get((int) Math.ceil(j));
     Pixel D = this.image.getPixels().get((int) Math.ceil(i)).get((int) Math.ceil(j));
 
-    double mRed = B.getR() * (j - Math.floor(j)) + A.getR() * (Math.ceil(j) - j);
-    double nRed = D.getR() * (j - Math.floor(j)) + C.getR() * (Math.ceil(j) - j);
-    int cRed = (int) (nRed * (i - Math.floor(i)) + mRed * (Math.ceil(i) - i));
+    double mRed = B.getR() * (j - Math.floor(j)) + A.getR() * (Math.round(j + 0.5) - j);
+    double nRed = D.getR() * (j - Math.floor(j)) + C.getR() * (Math.round(j + 0.5) - j);
+    int cRed = (int) (Math.round(nRed * (i - Math.floor(i)) + mRed * (Math.round(i + 0.5) - i)));
 
-    double mGreen = B.getG() * (j - Math.floor(j)) + A.getG() * (Math.ceil(j) - j);
-    double nGreen = D.getG() * (j - Math.floor(j)) + C.getG() * (Math.ceil(j) - j);
-    int cGreen = (int) (nGreen * (i - Math.floor(i)) + mGreen * (Math.ceil(i) - i));
+    double mGreen = B.getG() * (j - Math.floor(j)) + A.getG() * (Math.round(j + 0.5) - j);
+    double nGreen = D.getG() * (j - Math.floor(j)) + C.getG() * (Math.round(j + 0.5) - j);
+    int cGreen = (int) (Math.round(nGreen * (i - Math.floor(i)) + mGreen * (Math.round(i + 0.5) - i)));
 
-    double mBlue = B.getB() * (j - Math.floor(j)) + A.getB() * (Math.ceil(j) - j);
-    double nBlue = D.getB() * (j - Math.floor(j)) + C.getB() * (Math.ceil(j) - j);
-    int cBlue = (int) (nBlue * (i - Math.floor(i)) + mBlue * (Math.ceil(i) - i));
+    double mBlue = B.getB() * (j - Math.floor(j)) + A.getB() * (Math.round(j + 0.5) - j);
+    double nBlue = D.getB() * (j - Math.floor(j)) + C.getB() * (Math.round(j + 0.5) - j);
+    int cBlue = (int) (Math.round(nBlue * (i - Math.floor(i)) + mBlue * (Math.round(i + 0.5) - i)));
 
     return new Pixel(cRed, cGreen, cBlue);
   }
