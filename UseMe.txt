@@ -1,0 +1,31 @@
+USE ME:
+
+In order to run our program please follow these simple steps.
+
+1. Load up our program and hit the run button.
+2. Within the console, you can pass in a script file into the console which will run all commands set in the script. (See Step 3 and onwards if a script file will not be used.)
+3. If a script is not being used, please first type load into the console as instructed in the instructions menu to load the image you would like to use.
+4. Then, following our menu of commands, modify the image you have loaded in any way you want.
+5. After all modifications have been applied, save the image under the supported png/jpg/bmp/ppm formats.
+6. Type q or quit into the console to quit!
+
+
+Supported user instructions are: 
+load [image-path] [image-name]
+save [image-path] [image-name]
+red-component [image-name] [dest-image-name]
+green-component [image-name] [dest-image-name]
+blue-component [image-name] [dest-image-name]
+value [image-name] [dest-image-name]
+luma [image-name] [dest-image-name]
+intensity [image-name] [dest-image-name]
+horizontal-flip [image-name] [dest-image-name]
+vertical-flip [image-name] [dest-image-name]
+blur [image-name] [dest-image-name]
+sharpen [image-name] [dest-image-name]
+sepia [image-name] [dest-image-name]
+brighten [increment] [image-name] [dest-image-name]
+q or quit (quit the program) 
+m or menu (prints the supported instructions menu) 
+
+Enjoy!

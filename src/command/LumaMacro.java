@@ -4,8 +4,8 @@ import image.Image;
 import image.Pixel;
 
 /**
- * Represents the weighted average as the value to be set with the Luma conversion by rounding the
- * value to the nearest integer.
+ * Represents the Luma greyscale by rounding the value of RGB's to the nearest integer after
+ * arithmetic application.
  */
 public class LumaMacro implements CommandMacro {
   private final Image image;

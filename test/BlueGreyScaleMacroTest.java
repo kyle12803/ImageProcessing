@@ -33,7 +33,6 @@ public class BlueGreyScaleMacroTest {
   Image image1;
   Image image2;
 
-
   ImageProcessingModel modelExample;
 
   @Before
@@ -45,11 +44,11 @@ public class BlueGreyScaleMacroTest {
     this.exampleTest5 = new Pixel(200, 25, 25);
     this.exampleTest6 = new Pixel(55, 25, 55);
     this.lop1 = new ArrayList<>(asList(
-            new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
-            new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
+        new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
+        new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
     this.lop2 = new ArrayList<>(asList(
-            new ArrayList<>(asList(exampleTest1, exampleTest2)),
-            new ArrayList<>(asList(exampleTest3, exampleTest4))));
+        new ArrayList<>(asList(exampleTest1, exampleTest2)),
+        new ArrayList<>(asList(exampleTest3, exampleTest4))));
 
     this.image1 = new ImageImpl(255, 3, 2, lop1);
     this.image2 = new ImageImpl(255, 2, 2, lop2);
@@ -78,7 +77,6 @@ public class BlueGreyScaleMacroTest {
     assertEquals(55, image1.getPixels().get(1).get(2).getR());
     assertEquals(55, image1.getPixels().get(1).get(2).getG());
     assertEquals(55, image1.getPixels().get(1).get(2).getB());
-
 
   }
 

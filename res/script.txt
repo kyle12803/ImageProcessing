@@ -1,0 +1,26 @@
+load grandma.png gran
+red-component gran redgran
+green-component gran greengran
+blue-component gran bluegran
+value gran valuegran
+intensity gran intensitygran
+luma gran lumagran
+sepia gran sepiagran
+brighten 100 gran brightengran
+horizontal-flip gran horizontalgran
+vertical-flip gran verticalgran
+blur gran blurgran
+sharpen gran sharpengran
+save redGran.jpg redgran
+save greenGran.jpg greengran
+save blueGran.jpg bluegran
+save valueGran.jpg valuegran
+save intensityGran.jpg intensitygran
+save lumaGran.jpg lumagran
+save sepiaGran.jpg sepiagran
+save brightenGran.jpg brightengran
+save horizontalGran.jpg horizontalgran
+save veticalGran.bmp verticalgran
+save blurGran.jpeg blurgran
+save sharpenGran.png sharpengran
+q

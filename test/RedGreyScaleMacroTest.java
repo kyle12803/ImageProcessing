@@ -23,13 +23,12 @@ public class RedGreyScaleMacroTest {
   Pixel exampleTest5 = new Pixel(200, 25, 25);
   Pixel exampleTest6 = new Pixel(55, 25, 55);
 
-
   List<List<Pixel>> lop1 = new ArrayList<>(asList(
-          new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
-          new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
+      new ArrayList<>(asList(exampleTest1, exampleTest2, exampleTest3)),
+      new ArrayList<>(asList(exampleTest4, exampleTest5, exampleTest6))));
   List<List<Pixel>> lop2 = new ArrayList<>(asList(
-          new ArrayList<>(asList(exampleTest1, exampleTest2)),
-          new ArrayList<>(asList(exampleTest3, exampleTest4))));
+      new ArrayList<>(asList(exampleTest1, exampleTest2)),
+      new ArrayList<>(asList(exampleTest3, exampleTest4))));
 
   Image image1 = new ImageImpl(255, 3, 2, lop1);
   Image image2 = new ImageImpl(255, 2, 2, lop2);

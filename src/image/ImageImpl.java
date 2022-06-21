@@ -51,4 +51,5 @@ public class ImageImpl implements Image {
   public List<List<Pixel>> getPixels() {
     return this.lop;
   }
+
 }
