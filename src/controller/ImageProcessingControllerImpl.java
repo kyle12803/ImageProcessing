@@ -7,7 +7,7 @@ import java.util.Scanner;
 import command.BlueGreyScaleMacro;
 import command.BlurMacro;
 import command.BrightenMacro;
-import command.Downsize;
+import command.Downscale;
 import command.GreenGreyScaleMacro;
 import command.HorizontalFlipMacro;
 import command.IntensityMacro;
@@ -267,13 +267,13 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           writeMessage("Invalid operation! Please try again.\n");
         }
         break;
-      case "downsize":
+      case "downscale":
         if (line.length == 4) {
           try {
             double scale = Double.parseDouble(line[1]);
             String imgName = line[2];
             String destName = line[3];
-            Image newImage = new Downsize(this.model.getImage(imgName), scale).resize();
+            Image newImage = new Downscale(this.model.getImage(imgName), scale).resize();
             this.model.addImage(newImage, destName);
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");

@@ -11,7 +11,7 @@ import image.Pixel;
  * Represents a downscale function which downsizes an image by altering the width, height, and
  * pixels.
  */
-public class Downsize {
+public class Downscale {
   private final Image image;
   private final double scale;
 
@@ -22,7 +22,7 @@ public class Downsize {
    * @param scale the percentage to scale by
    * @throws IllegalArgumentException if scale is invalid
    */
-  public Downsize(Image image, double scale) throws IllegalArgumentException {
+  public Downscale(Image image, double scale) throws IllegalArgumentException {
     if (scale < 0 || scale > 100) {
       throw new IllegalArgumentException("Invalid scale to downsize.");
     }
