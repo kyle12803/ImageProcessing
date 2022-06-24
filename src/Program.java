@@ -4,10 +4,12 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Scanner;
 
+import controller.ImageGUIController;
 import controller.ImageProcessingController;
 import controller.ImageProcessingControllerImpl;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+import view.ImageGUIFrame;
 import view.ImageProcessingView;
 import view.ImageProcessingViewImpl;
 
@@ -37,6 +39,10 @@ public class Program {
     ImageProcessingModel model = new ImageProcessingModelImpl();
     ImageProcessingView view = new ImageProcessingViewImpl();
     ImageProcessingController controller = new ImageProcessingControllerImpl(rd, model, view);
-    controller.runProgram();
+    ImageGUIController controller2 = null;
+    ImageGUIFrame view2 = new ImageGUIFrame(controller2);
+    controller2 = new ImageGUIController(model, view2);
+    //  controller.runProgram();
+    controller2.runProgram();
   }
 }
