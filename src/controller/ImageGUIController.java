@@ -1,11 +1,8 @@
 package controller;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.NoSuchElementException;
 
 import javax.swing.*;
@@ -27,25 +24,34 @@ import command.VerticalFlipMacro;
 import file.LoadFile;
 import file.SaveFile;
 import model.ImageProcessingModel;
+import view.IView;
 import view.ImageGUIFrame;
 
 /**
- * This is the Controller for the GUI
+ * This is the Controller for the GUI.
  */
 public class ImageGUIController implements ImageProcessingController, ActionListener {
   private final ImageProcessingModel model;
-  private final ImageGUIFrame view;
+  private final IView view;
 
-  private StringBuilder fileName;
+  private final StringBuilder fileName;
 
 
-  public ImageGUIController(ImageProcessingModel model, ImageGUIFrame view) {
+  /**
+   * Constructs a gui controller which connects to the model and the view.
+   *
+   * @param model the image processing model
+   * @param view  the image processing view
+   * @throws IllegalArgumentException if the model or view is null
+   */
+  public ImageGUIController(ImageProcessingModel model, IView view)
+          throws IllegalArgumentException {
     if (model == null || view == null) {
       throw new IllegalArgumentException("Invalid model, view or input");
     }
     this.model = model;
     this.view = view;
-   this.fileName = new StringBuilder("Image");
+    this.fileName = new StringBuilder("Image");
   }
 
 
@@ -54,18 +60,18 @@ public class ImageGUIController implements ImageProcessingController, ActionList
     this.view.makeVisible(this);
   }
 
-  public String fileNameGet(){
+  public String fileNameGet() {
     return fileName.toString();
   }
 
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    System.out.println(e.getActionCommand().toString());
     switch (e.getActionCommand()) {
 
       case "Load":
-        JFileChooser chosen = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        JFileChooser chosen = new JFileChooser(FileSystemView.getFileSystemView()
+                .getHomeDirectory());
         chosen.showOpenDialog(null);
         File selectedFile = chosen.getSelectedFile();
         if (selectedFile == null) {
@@ -74,13 +80,12 @@ public class ImageGUIController implements ImageProcessingController, ActionList
 
         String path = selectedFile.getPath();
         String name = selectedFile.getName();
-        System.out.println(path);
-        System.out.println(name);
-        fileName.delete(0,fileName.length());
+        fileName.delete(0, fileName.length());
         fileName.append(name);
         try {
           this.model.addImage(new LoadFile().load(path), name);
           view.renderImage(this.model.getImage(name));
+          view.renderHistogram(this.model.getImage(name));
         } catch (NoSuchElementException | IllegalArgumentException x) {
         }
         break;
@@ -103,14 +108,13 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               y.printStackTrace();
             }
           }
-        } catch (NullPointerException | NoSuchElementException | IllegalArgumentException y)  {
+        } catch (NullPointerException | NoSuchElementException | IllegalArgumentException y) {
         }
         break;
 
       case "comboBoxChanged":
         JComboBox button = (JComboBox) e.getSource();
         String str = button.getSelectedItem().toString();
-        System.out.println(str);
         switch (str) {
           case "Red Component":
             try {
@@ -118,7 +122,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Red Component";
               this.model.execute(new RedGreyScaleMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Green Component":
@@ -127,7 +133,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Green Component";
               this.model.execute(new GreenGreyScaleMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Blue Component":
@@ -136,7 +144,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Blue Component";
               this.model.execute(new BlueGreyScaleMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Value":
@@ -145,7 +155,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Value";
               this.model.execute(new ValueMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Luma":
@@ -154,7 +166,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Luma";
               this.model.execute(new LumaMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Intensity":
@@ -163,7 +177,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Intensity";
               this.model.execute(new IntensityMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Horizontal Flip":
@@ -172,7 +188,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Horizontal Flip";
               this.model.execute(new HorizontalFlipMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Vertical Flip":
@@ -181,7 +199,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Vertical Component";
               this.model.execute(new VerticalFlipMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Blur":
@@ -190,7 +210,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Blur";
               this.model.execute(new BlurMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Sharpen":
@@ -199,7 +221,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Sharpen";
               this.model.execute(new SharpenMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Sepia":
@@ -208,7 +232,9 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destName = imgName + "Sepia";
               this.model.execute(new SepiaMacro(this.model.clone(imgName, destName)));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Brighten":
@@ -216,12 +242,15 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String imgName = fileName.toString();
               String destName = imgName + "Brighten";
               JTextField brightnessText = new JTextField();
-              brightnessText.setBorder(BorderFactory.createTitledBorder("Enter the brightness increment:"));
+              brightnessText.setBorder(BorderFactory.
+                      createTitledBorder("Enter the brightness increment:"));
               JSpinner numInput = new JSpinner();
               int num = (Integer) numInput.getValue();
               this.model.execute(new BrightenMacro(this.model.clone(imgName, destName), num));
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
 
           case "Downscale":
@@ -233,13 +262,16 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               String destinationName = finalName.getText();
               String destName = destinationName;
               JTextField downScaleText = new JTextField();
-              downScaleText.setBorder(BorderFactory.createTitledBorder("Enter the downscale increment:"));
+              downScaleText.setBorder(BorderFactory.
+                      createTitledBorder("Enter the downscale increment:"));
               double num = Double.parseDouble(downScaleText.getText());
               (new Downscale(this.model.clone(imgName, destName), num)).resize();
               view.renderImage(this.model.getImage(destName));
-            } catch (NoSuchElementException | IllegalArgumentException x) {}
+              view.renderHistogram(this.model.getImage(destName));
+            } catch (NoSuchElementException | IllegalArgumentException x) {
+            }
             break;
-        }
         }
     }
   }
+}

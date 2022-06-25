@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionListener;
 
+import image.Image;
+
 public interface IView {
   /**
    * Make the view visible. This is usually called
@@ -9,14 +11,17 @@ public interface IView {
    */
   void makeVisible(ActionListener actionListener);
 
+  /**
+   * The method renders the histogram continuously.
+   *
+   * @param image the image passed in to get rendered.
+   */
+  public void renderHistogram(Image image);
 
   /**
-   * Transmit an error message to the view, in case
-   * the command could not be processed correctly
+   * The method continually renders the image as it is laoded, saved or modified.
    *
-   * @param error this is the error message to be shown.
+   * @param image image passed in for the program.
    */
-  void showErrorMessage(String error);
-
-
+  public void renderImage(Image image);
 }

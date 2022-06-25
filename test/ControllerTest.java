@@ -98,6 +98,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Thank you for using this program!", this.ap.toString());
@@ -126,6 +129,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Invalid operation! Please try again." + "\n" +
@@ -155,6 +161,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Thank you for using this program!", this.ap.toString());
@@ -186,6 +195,10 @@ public class ControllerTest {
                     "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
                     "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
                     "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "downscale [percentage-scale] [image-name] [dest-image-name]" +
+                    System.lineSeparator() +
+                    "If you would like to partially manipulate an image please use: " +
+                    "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
                     "q or quit (quit the program) " + System.lineSeparator() +
                     "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
                     "Type instruction: Type instruction: Type instruction: Type instruction: " +
@@ -217,6 +230,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -247,6 +263,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -277,6 +296,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -307,6 +329,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -337,6 +362,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -367,6 +395,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -397,6 +428,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -427,6 +461,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -457,6 +494,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -487,6 +527,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -517,6 +560,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: Type instruction: " +
@@ -546,6 +592,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: " +
@@ -575,6 +624,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: " +
@@ -604,6 +656,9 @@ public class ControllerTest {
             "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
             "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
             "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "downscale [percentage-scale] [image-name] [dest-image-name]" + System.lineSeparator() +
+            "If you would like to partially manipulate an image please use: " +
+            "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
             "q or quit (quit the program) " + System.lineSeparator() +
             "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
             "Type instruction: Type instruction: " +
@@ -636,6 +691,10 @@ public class ControllerTest {
                     "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
                     "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
                     "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "downscale [percentage-scale] [image-name] [dest-image-name]" +
+                    System.lineSeparator() +
+                    "If you would like to partially manipulate an image please use: " +
+                    "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
                     "q or quit (quit the program) " + System.lineSeparator() +
                     "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
                     "Type instruction: Type instruction: Type instruction: Type instruction: " +
@@ -669,6 +728,10 @@ public class ControllerTest {
                     "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
                     "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
                     "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "downscale [percentage-scale] [image-name] [dest-image-name]" +
+                    System.lineSeparator() +
+                    "If you would like to partially manipulate an image please use: " +
+                    "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
                     "q or quit (quit the program) " + System.lineSeparator() +
                     "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
                     "Type instruction: Type instruction: Type instruction: Type instruction: " +
@@ -702,16 +765,21 @@ public class ControllerTest {
                     "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
                     "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
                     "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "downscale [percentage-scale] [image-name] [dest-image-name]" +
+                    System.lineSeparator() +
+                    "If you would like to partially manipulate an image please use: " +
+                    "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
                     "q or quit (quit the program) " + System.lineSeparator() +
                     "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
                     "Type instruction: Type instruction: Type instruction: Type instruction: " +
                     "Thank you for using this program!",
             this.ap.toString());
   }
+
   @Test
   public void testRunProgramDownsize() {
     this.rd = new StringReader("load res/grandma.ppm grandma \n" +
-            "downsize 50 grandma downsize \n" +
+            "downscale 50 grandma downsize \n" +
             "save res/downsize.ppm downsize \n"
             + "q");
     this.ap = new StringBuilder();
@@ -734,6 +802,10 @@ public class ControllerTest {
                     "sharpen [image-name] [dest-image-name]" + System.lineSeparator() +
                     "sepia [image-name] [dest-image-name]" + System.lineSeparator() +
                     "brighten [increment] [image-name] [dest-image-name]" + System.lineSeparator() +
+                    "downscale [percentage-scale] [image-name] [dest-image-name]" +
+                    System.lineSeparator() +
+                    "If you would like to partially manipulate an image please use: " +
+                    "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator() +
                     "q or quit (quit the program) " + System.lineSeparator() +
                     "m or menu (prints the supported instructions menu) " + System.lineSeparator() +
                     "Type instruction: Type instruction: Type instruction: Type instruction: " +

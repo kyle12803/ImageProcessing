@@ -11,6 +11,16 @@ horizontal-flip gran horizontalgran
 vertical-flip gran verticalgran
 blur gran blurgran
 sharpen gran sharpengran
+downscale 50 gran downscalegran
+load maskImage.png mask
+red-component gran mask partialredgran
+green-component gran mask partialgreengran
+blue-component gran mask partialbluegran
+value gran mask partialvaluegran
+intensity gran mask partialintensitygran
+luma gran mask partiallumagran
+sepia gran mask partialsepiagran
+blur gran mask partialblur
 save redGran.jpg redgran
 save greenGran.jpg greengran
 save blueGran.jpg bluegran
@@ -23,4 +33,12 @@ save horizontalGran.jpg horizontalgran
 save veticalGran.bmp verticalgran
 save blurGran.jpeg blurgran
 save sharpenGran.png sharpengran
+save partialRedGran.ppm partialredgran
+save partialGreenGran.ppm partialgreengran
+save partialBlueGran.ppm partialbluegran
+save partialValuGran.ppm partialvaluegran
+save partialIntensityGran.ppm partialintensitygran
+save partialLumaGran.ppm partiallumagran
+save partialSepiaGran.ppm partialsepiagran
+save partialBlur.ppm partialblur
 q

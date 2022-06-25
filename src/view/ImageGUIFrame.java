@@ -1,19 +1,28 @@
 package view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 import controller.ImageGUIController;
 import image.Image;
 import image.Pixel;
 
+/**
+ * The class for the view of our frame for our program.
+ */
 public class ImageGUIFrame extends JFrame implements IView {
 
   private JPanel mainPanel;
@@ -22,6 +31,8 @@ public class ImageGUIFrame extends JFrame implements IView {
   private JLabel fileOpenDisplay;
   private JPanel imagePanel;
   private JLabel imageLabel;
+  private Histogram histogramPanel;
+  private JLabel histogramLabel;
 
   private JLabel fileSaveDisplay;
   private ImageGUIController controller;
@@ -29,17 +40,22 @@ public class ImageGUIFrame extends JFrame implements IView {
 
 
   /**
-   * The Frame for the GUI.
+   * The frame for our GUI is constructed here with a controller.
    */
   public ImageGUIFrame(ImageGUIController controller) {
     super();
     this.controller = controller;
-    this.imageLabel=new JLabel();
+    this.imageLabel = new JLabel();
   }
 
+  /**
+   * The method initFrame initializes the frame of our gui with all the components.
+   *
+   * @param actionListener the action listener delegates the command of what happens.
+   */
   public void initFrame(ActionListener actionListener) {
     this.setTitle("Image Processor");
-    this.setSize(700, 700);
+    this.setSize(800, 800);
     this.setVisible(true);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -57,21 +73,22 @@ public class ImageGUIFrame extends JFrame implements IView {
     dialogBoxesPanel.setLayout(new BoxLayout(dialogBoxesPanel, BoxLayout.PAGE_AXIS));
 
 
-    //Displaying an image (Needs help fixing)
+    //Displaying an image
     this.imagePanel = new JPanel();
     this.imagePanel.setBorder(BorderFactory.createTitledBorder("Images"));
     dialogBoxesPanel.add(imagePanel);
 
     JScrollPane imageScrollPane = new JScrollPane(imageLabel);
-     imageScrollPane.setPreferredSize(new Dimension(300, 300));
-     imagePanel.add(imageScrollPane);
+    imageScrollPane.setPreferredSize(new Dimension(400, 400));
+    imagePanel.add(imageScrollPane);
 
-//    //Displaying an histogram (Needs help finishing)
-//    JPanel histogramPanel = new JPanel();
-//    histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram"));
-//    histogramPanel.setLayout(new BoxLayout(histogramPanel, BoxLayout.PAGE_AXIS));
-//    dialogBoxesPanel.add(histogramPanel);
-//    this.mainPanel.add(imagePanel);
+    //Displaying an histogram (Needs help finishing)
+    this.histogramPanel = new Histogram();
+    histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram"));
+    dialogBoxesPanel.add(histogramPanel);
+    JScrollPane histogramScrollPane = new JScrollPane(histogramLabel);
+    histogramScrollPane.setPreferredSize(new Dimension(400, 400));
+    histogramPanel.add(histogramScrollPane);
 
     //file open
     JPanel fileopenPanel = new JPanel();
@@ -83,7 +100,6 @@ public class ImageGUIFrame extends JFrame implements IView {
     fileopenPanel.add(fileOpenButton);
     fileOpenDisplay = new JLabel("File path will appear here");
     fileopenPanel.add(fileOpenDisplay);
-
 
 
     //file save
@@ -105,10 +121,6 @@ public class ImageGUIFrame extends JFrame implements IView {
 
     comboboxDisplay = new JLabel("Commands");
     comboboxPanel.add(comboboxDisplay);
-   // JButton apply = new JButton("Apply");
-    //apply.setActionCommand("Apply");
-    //apply.addActionListener(actionListener);
-    //comboboxPanel.add(apply);
     String[] options = {"Red Component", "Green Component", "Blue Component",
             "Value", "Luma", "Intensity", "Horizontal Flip", "Vertical Flip",
             "Blur", "Sharpen", "Sepia", "Brighten", "Downscale"};
@@ -122,10 +134,14 @@ public class ImageGUIFrame extends JFrame implements IView {
     comboboxPanel.add(comboBox);
 
 
-
     this.pack();
   }
 
+  /**
+   * The make visible method allows the view to come to fruition.
+   *
+   * @param actionListener the actionlistener is passed into the view to get behavior.
+   */
   @Override
   public void makeVisible(ActionListener actionListener) {
     this.setDefaultLookAndFeelDecorated(false);
@@ -133,24 +149,28 @@ public class ImageGUIFrame extends JFrame implements IView {
     this.setVisible(true);
   }
 
+
   @Override
-  public void showErrorMessage(String error) {
+  public void renderImage(Image image) {
+    BufferedImage output;
+    output = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
 
-  }
-
-  public void renderImage(Image image){
-          BufferedImage output;
-            output = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
-
-            for(int i=0; i<image.getHeight();i++){
-              for(int j=0;j<image.getWidth();j++){
-                Pixel pixel = image.getPixels().get(i).get(j);
-                Color color=new Color(pixel.getR(), pixel.getG(), pixel.getB());
-                output.setRGB(j,i,color.getRGB());
-              }
-            }
+    for (int i = 0; i < image.getHeight(); i++) {
+      for (int j = 0; j < image.getWidth(); j++) {
+        Pixel pixel = image.getPixels().get(i).get(j);
+        Color color = new Color(pixel.getR(), pixel.getG(), pixel.getB());
+        output.setRGB(j, i, color.getRGB());
+      }
+    }
 
     imageLabel.setIcon(new ImageIcon(output));
     imagePanel.validate();
+  }
+
+  @Override
+  public void renderHistogram(Image image) {
+
+    this.histogramPanel.updateData(image);
+    this.histogramPanel.validate();
   }
 }

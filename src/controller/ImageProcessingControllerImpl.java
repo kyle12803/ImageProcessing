@@ -12,6 +12,7 @@ import command.GreenGreyScaleMacro;
 import command.HorizontalFlipMacro;
 import command.IntensityMacro;
 import command.LumaMacro;
+import command.PartialImageMacro;
 import command.RedGreyScaleMacro;
 import command.SepiaMacro;
 import command.SharpenMacro;
@@ -119,6 +120,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new RedGreyScaleMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
         } else {
           writeMessage("Invalid operation! Please try again.\n");
         }
@@ -129,6 +141,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String imgName = line[1];
             String destName = line[2];
             this.model.execute(new GreenGreyScaleMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new GreenGreyScaleMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
@@ -145,6 +168,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new BlueGreyScaleMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
         } else {
           writeMessage("Invalid operation! Please try again.\n");
         }
@@ -155,6 +189,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String imgName = line[1];
             String destName = line[2];
             this.model.execute(new ValueMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new ValueMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
@@ -171,6 +216,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new IntensityMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
         } else {
           writeMessage("Invalid operation! Please try again.\n");
         }
@@ -184,6 +240,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new LumaMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
         } else {
           writeMessage("Invalid operation! Please try again.\n");
         }
@@ -194,6 +261,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String imgName = line[1];
             String destName = line[2];
             this.model.execute(new SepiaMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new SepiaMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
@@ -250,6 +328,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new BlurMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
         } else {
           writeMessage("Invalid operation! Please try again.\n");
         }
@@ -260,6 +349,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             String imgName = line[1];
             String destName = line[2];
             this.model.execute(new SharpenMacro(this.model.clone(imgName, destName)));
+          } catch (NoSuchElementException | IllegalArgumentException e) {
+            writeMessage("Invalid operation! Please try again.\n");
+          }
+        } else if (line.length == 4) {
+          try {
+            String imgName = line[1];
+            String maskImg = line[2];
+            String destName = line[3];
+            this.model.execute(new SharpenMacro(this.model.clone(imgName, destName)));
+            this.model.execute(new PartialImageMacro(this.model.getImage(maskImg),
+                    this.model.getImage(destName), this.model.getImage(imgName)));
           } catch (NoSuchElementException | IllegalArgumentException e) {
             writeMessage("Invalid operation! Please try again.\n");
           }
@@ -300,7 +400,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   /**
    * Prints the menu.
    *
-   * @throws IllegalStateException - thrown if aanything is null.
+   * @throws IllegalStateException - thrown if anything is null.
    */
   private void printMenu() throws IllegalStateException {
     writeMessage("Supported user instructions are: " + System.lineSeparator());
@@ -319,6 +419,10 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     writeMessage("sepia [image-name] [dest-image-name]" + System.lineSeparator());
     writeMessage("brighten [increment] [image-name] [dest-image-name]"
             + System.lineSeparator());
+    writeMessage("downscale [percentage-scale] [image-name] [dest-image-name]"
+            + System.lineSeparator());
+    writeMessage("If you would like to partially manipulate an image please use: "
+            + "[command] [image-name] [mask-image] [dest-name]" + System.lineSeparator());
     writeMessage("q or quit (quit the program) " + System.lineSeparator());
     writeMessage("m or menu (prints the supported instructions menu) "
             + System.lineSeparator());

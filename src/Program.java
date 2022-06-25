@@ -23,10 +23,12 @@ public class Program {
    * @param args arguments needed to run the program.
    */
   public static void main(String[] args) {
+    ImageProcessingModel model = new ImageProcessingModelImpl();
+    ImageProcessingView view = new ImageProcessingViewImpl();
     Readable rd = new InputStreamReader(System.in);
-    if (args.length > 0) {
+    if (args.length == 2 && args[0].equals("-file")) {
       try {
-        Scanner sc = new Scanner(new FileReader(args[0]));
+        Scanner sc = new Scanner(new FileReader(args[1]));
         StringBuilder builder = new StringBuilder();
         while (sc.hasNextLine()) {
           builder.append(sc.nextLine()).append(System.lineSeparator());
@@ -35,14 +37,16 @@ public class Program {
       } catch (IOException e) {
         throw new RuntimeException("File not found.");
       }
+    } else if (args.length == 1 && args[0].equals("-text")) {
+      ImageProcessingController controller = new ImageProcessingControllerImpl(rd, model, view);
+      controller.runProgram();
+    } else if (args.length == 0) {
+      ImageGUIController controller2 = null;
+      ImageGUIFrame view2 = new ImageGUIFrame(controller2);
+      controller2 = new ImageGUIController(model, view2);
+      controller2.runProgram();
+    } else {
+      throw new IllegalArgumentException("Invalid command line arguments.");
     }
-    ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingView view = new ImageProcessingViewImpl();
-    ImageProcessingController controller = new ImageProcessingControllerImpl(rd, model, view);
-    ImageGUIController controller2 = null;
-    ImageGUIFrame view2 = new ImageGUIFrame(controller2);
-    controller2 = new ImageGUIController(model, view2);
-    //  controller.runProgram();
-    controller2.runProgram();
   }
 }

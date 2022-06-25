@@ -1,14 +1,12 @@
 USE ME:
 
-In order to run our program please follow these simple steps.
+In order to run our text based program please follow these simple steps.
 
-1. Load up our program and hit the run button.
-2. Within the console, you can pass in a script file into the console which will run all commands set in the script. (See Step 3 and onwards if a script file will not be used.)
-3. If a script is not being used, please first type load into the console as instructed in the instructions menu to load the image you would like to use.
+1. If you would like to run a script, please type "-file [path-of-script-file]" and run the program which will run all commands set in the script.
+2. Otherwise, type "-text" into the command line and run the program. 
+3. Next, type the load command into the console as instructed in the instructions menu to load the image you would like to use before any other commands.
 4. Then, following our menu of commands, modify the image you have loaded in any way you want.
-5. After all modifications have been applied, save the image under the supported png/jpg/bmp/ppm formats.
-
-
+5. After all modifications have been applied, save the modified image under the supported png/jpg/jpeg/bmp/ppm formats.
 
 Supported user instructions are: 
 load [image-path] [image-name]
@@ -25,6 +23,15 @@ blur [image-name] [dest-image-name]
 sharpen [image-name] [dest-image-name]
 sepia [image-name] [dest-image-name]
 brighten [increment] [image-name] [dest-image-name]
+downscale [percentage-scale] [image-name] [dest-image-name]
+If you would like to partially manipulate an image please use: [command] [image-name] [mask-image] [dest-name]
 q or quit (quit the program) 
 m or menu (prints the supported instructions menu)
 Enjoy!
+
+In order to to run our GUI based program please follow these simple steps.
+
+1. Simply run the program with no command line arguments.
+2. Then, using the GUI, hit load, and load an image.
+3. Then, using the combobox, you can select any command and it will apply to the image.
+4. You can hit save, and then it will save the file to a designated path and name.

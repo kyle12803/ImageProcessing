@@ -11,6 +11,8 @@ We followed the command design pattern to implement all the behaviors.
 Our command folder has all the commands needed for the program to function.
 The command interface runs a command on an image.
 Every class within the package command has the arithmetic to properly have the command behave as intended.
+In order to implement Downscale, we had to create an entirely new class similarly to how load and save are independent. This class is used in the controller which is just another added switch case checking for the "downscale" command. 
+In order to implement Partial Image Manipulation, we created another CommandMacro which takes in three images; the mask, the image that has already applied the manipulation, and the original image. We then had to go through each color transformation command and check for four components which demonstrates a mask was passed in. Then we applied the original command and then the partial manipulation on this image.
 
 Our File folder saves and loads our files.
 The load class loads an image depending on the given type of format.
@@ -29,3 +31,9 @@ Our view renders the messages from the controller.
 
 Image used in res folder is from https://www.dreamstime.com/photos-images/angry-grandma.html
 This image is a free and royalty-free stock photo from Dreamstime.
+
+For our new GUI implementation, we created several JComponents from the Swing class to tie in everything. We followed a top down design where there is the main panel at the top, the dialog boxes connected under the main panel, and all other panels are added to the dialog boxes panel. We represent an image at the top, then a histogram, then we have the load and save buttons. At the bottom, we have a combobox with all the commands. Once an option is selected, the image updates and so does the histogram.
+
+Our GUI is represented in a class where there is a frame. The frame contains the initFrame, where the method call creates everything instead of creating everything in just the constructor. We also have render image and render histogram which both update the histogram and image respectively. 
+
+To generate our histogram, we created a histogram class which computes everything and stores the colors as well as their frequencies to a map.
