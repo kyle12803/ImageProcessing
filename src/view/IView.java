@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 
 import image.Image;
 
+/**
+ * This represents the interface for all views in the GUI.
+ */
 public interface IView {
   /**
    * Make the view visible. This is usually called

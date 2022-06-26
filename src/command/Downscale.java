@@ -55,21 +55,22 @@ public class Downscale {
   }
 
   private Pixel pixelConverter(double i, double j) {
-    Pixel A = this.image.getPixels().get((int) Math.floor(i)).get((int) Math.floor(j));
-    Pixel B = this.image.getPixels().get((int) Math.ceil(i)).get((int) Math.floor(j));
-    Pixel C = this.image.getPixels().get((int) Math.floor(i)).get((int) Math.ceil(j));
-    Pixel D = this.image.getPixels().get((int) Math.ceil(i)).get((int) Math.ceil(j));
+    Pixel a = this.image.getPixels().get((int) Math.floor(i)).get((int) Math.floor(j));
+    Pixel b = this.image.getPixels().get((int) Math.ceil(i)).get((int) Math.floor(j));
+    Pixel c = this.image.getPixels().get((int) Math.floor(i)).get((int) Math.ceil(j));
+    Pixel d = this.image.getPixels().get((int) Math.ceil(i)).get((int) Math.ceil(j));
 
-    double mRed = B.getR() * (j - Math.floor(j)) + A.getR() * (Math.round(j + 0.5) - j);
-    double nRed = D.getR() * (j - Math.floor(j)) + C.getR() * (Math.round(j + 0.5) - j);
+    double mRed = b.getR() * (j - Math.floor(j)) + a.getR() * (Math.round(j + 0.5) - j);
+    double nRed = d.getR() * (j - Math.floor(j)) + c.getR() * (Math.round(j + 0.5) - j);
     int cRed = (int) (Math.round(nRed * (i - Math.floor(i)) + mRed * (Math.round(i + 0.5) - i)));
 
-    double mGreen = B.getG() * (j - Math.floor(j)) + A.getG() * (Math.round(j + 0.5) - j);
-    double nGreen = D.getG() * (j - Math.floor(j)) + C.getG() * (Math.round(j + 0.5) - j);
-    int cGreen = (int) (Math.round(nGreen * (i - Math.floor(i)) + mGreen * (Math.round(i + 0.5) - i)));
+    double mGreen = b.getG() * (j - Math.floor(j)) + a.getG() * (Math.round(j + 0.5) - j);
+    double nGreen = d.getG() * (j - Math.floor(j)) + c.getG() * (Math.round(j + 0.5) - j);
+    int cGreen = (int) (Math.round(nGreen * (i - Math.floor(i)) + mGreen
+            * (Math.round(i + 0.5) - i)));
 
-    double mBlue = B.getB() * (j - Math.floor(j)) + A.getB() * (Math.round(j + 0.5) - j);
-    double nBlue = D.getB() * (j - Math.floor(j)) + C.getB() * (Math.round(j + 0.5) - j);
+    double mBlue = b.getB() * (j - Math.floor(j)) + a.getB() * (Math.round(j + 0.5) - j);
+    double nBlue = d.getB() * (j - Math.floor(j)) + c.getB() * (Math.round(j + 0.5) - j);
     int cBlue = (int) (Math.round(nBlue * (i - Math.floor(i)) + mBlue * (Math.round(i + 0.5) - i)));
 
     return new Pixel(cRed, cGreen, cBlue);

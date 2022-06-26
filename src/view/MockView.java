@@ -11,9 +11,16 @@ import image.Pixel;
 
 import static java.util.Arrays.asList;
 
+/**
+ * This represents the mock view used in testing.
+ */
 public class MockView implements IView {
   private final Appendable log;
 
+  /**
+   * This is the Mock constructor.
+   * @param log - log used to append things.
+   */
   public MockView(Appendable log) {
     this.log = log;
   }
@@ -73,11 +80,14 @@ public class MockView implements IView {
         this.getImageName();
         this.renderImage(image1);
         this.renderHistogram(image1);
+        break;
       case "comboBoxChanged":
         this.getImagePath();
         this.getImageName();
         this.renderImage(image1);
         this.renderHistogram(image1);
+        break;
+      default:
     }
   }
 

@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
-import controller.ImageGUIController;
+
 import image.Image;
 import image.Pixel;
 
@@ -25,26 +25,18 @@ import image.Pixel;
  */
 public class ImageGUIFrame extends JFrame implements IView {
 
-  private JPanel mainPanel;
-  private JScrollPane mainScrollPane;
-  private JLabel comboboxDisplay;
-  private JLabel fileOpenDisplay;
+
   private JPanel imagePanel;
   private JLabel imageLabel;
   private Histogram histogramPanel;
   private JLabel histogramLabel;
 
-  private JLabel fileSaveDisplay;
-  private ImageGUIController controller;
-  private ActionListener actionListener;
-
 
   /**
    * The frame for our GUI is constructed here with a controller.
    */
-  public ImageGUIFrame(ImageGUIController controller) {
+  public ImageGUIFrame() {
     super();
-    this.controller = controller;
     this.imageLabel = new JLabel();
   }
 
@@ -58,6 +50,13 @@ public class ImageGUIFrame extends JFrame implements IView {
     this.setSize(800, 800);
     this.setVisible(true);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    JPanel mainPanel;
+    JScrollPane mainScrollPane;
+    JLabel comboboxDisplay;
+    JLabel fileOpenDisplay;
+    JLabel fileSaveDisplay;
+
 
     //this is the main panel
     mainPanel = new JPanel();
@@ -122,8 +121,8 @@ public class ImageGUIFrame extends JFrame implements IView {
     comboboxDisplay = new JLabel("Commands");
     comboboxPanel.add(comboboxDisplay);
     String[] options = {"Red Component", "Green Component", "Blue Component",
-            "Value", "Luma", "Intensity", "Horizontal Flip", "Vertical Flip",
-            "Blur", "Sharpen", "Sepia", "Brighten", "Downscale"};
+                        "Value", "Luma", "Intensity", "Horizontal Flip", "Vertical Flip",
+                        "Blur", "Sharpen", "Sepia", "Brighten", "Downscale"};
     JComboBox<String> comboBox = new JComboBox<String>();
     //the event listener when an option is selected
     for (int i = 0; i < options.length; i++) {

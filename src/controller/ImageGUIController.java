@@ -5,8 +5,13 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.NoSuchElementException;
 
-import javax.swing.*;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
+import javax.swing.JSpinner;
 
 import command.BlueGreyScaleMacro;
 import command.BlurMacro;
@@ -25,7 +30,7 @@ import file.LoadFile;
 import file.SaveFile;
 import model.ImageProcessingModel;
 import view.IView;
-import view.ImageGUIFrame;
+
 
 /**
  * This is the Controller for the GUI.
@@ -68,7 +73,6 @@ public class ImageGUIController implements ImageProcessingController, ActionList
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
-
       case "Load":
         JFileChooser chosen = new JFileChooser(FileSystemView.getFileSystemView()
                 .getHomeDirectory());
@@ -87,6 +91,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
           view.renderImage(this.model.getImage(name));
           view.renderHistogram(this.model.getImage(name));
         } catch (NoSuchElementException | IllegalArgumentException x) {
+          throw new IllegalArgumentException();
         }
         break;
 
@@ -109,6 +114,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
             }
           }
         } catch (NullPointerException | NoSuchElementException | IllegalArgumentException y) {
+          throw new IllegalArgumentException();
         }
         break;
 
@@ -124,6 +130,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -135,6 +142,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -146,6 +154,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -157,6 +166,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -168,6 +178,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -179,6 +190,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -190,6 +202,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -201,6 +214,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -212,6 +226,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -223,6 +238,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -234,6 +250,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -250,6 +267,7 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
 
@@ -269,9 +287,13 @@ public class ImageGUIController implements ImageProcessingController, ActionList
               view.renderImage(this.model.getImage(destName));
               view.renderHistogram(this.model.getImage(destName));
             } catch (NoSuchElementException | IllegalArgumentException x) {
+              throw new IllegalArgumentException();
             }
             break;
+          default:
         }
+        break;
+      default:
     }
   }
 }

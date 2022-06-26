@@ -41,9 +41,8 @@ public class Program {
       ImageProcessingController controller = new ImageProcessingControllerImpl(rd, model, view);
       controller.runProgram();
     } else if (args.length == 0) {
-      ImageGUIController controller2 = null;
-      ImageGUIFrame view2 = new ImageGUIFrame(controller2);
-      controller2 = new ImageGUIController(model, view2);
+      ImageGUIFrame view2 = new ImageGUIFrame();
+      ImageGUIController controller2 = new ImageGUIController(model, view2);
       controller2.runProgram();
     } else {
       throw new IllegalArgumentException("Invalid command line arguments.");
